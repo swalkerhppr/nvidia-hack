@@ -6,8 +6,8 @@
       39.694595,
       -105.016703
     ],
-    "capacity_kg": 248,
-    "current_load_kg": 1,
+    "capacity_kg": 450,
+    "current_load_kg": 50,
     "accepts_perishable": true,
     "accepts_non_perishable": true,
     "operating_hours": "6:00-21:00",
@@ -20,10 +20,10 @@
       39.789642,
       -105.093243
     ],
-    "capacity_kg": 234,
+    "capacity_kg": 550,
     "current_load_kg": 40,
     "accepts_perishable": true,
-    "accepts_non_perishable": false,
+    "accepts_non_perishable": true,
     "operating_hours": "7:00-20:00",
     "contact_available": true
   },
@@ -34,8 +34,8 @@
       39.884304,
       -104.893572
     ],
-    "capacity_kg": 79,
-    "current_load_kg": 32,
+    "capacity_kg": 380,
+    "current_load_kg": 30,
     "accepts_perishable": true,
     "accepts_non_perishable": true,
     "operating_hours": "7:00-17:00",
@@ -48,8 +48,8 @@
       39.78495,
       -104.785068
     ],
-    "capacity_kg": 221,
-    "current_load_kg": 47,
+    "capacity_kg": 600,
+    "current_load_kg": 45,
     "accepts_perishable": true,
     "accepts_non_perishable": true,
     "operating_hours": "8:00-20:00",
@@ -62,10 +62,10 @@
       39.717636,
       -104.751776
     ],
-    "capacity_kg": 296,
-    "current_load_kg": 99,
+    "capacity_kg": 480,
+    "current_load_kg": 60,
     "accepts_perishable": true,
-    "accepts_non_perishable": false,
+    "accepts_non_perishable": true,
     "operating_hours": "6:00-19:00",
     "contact_available": true
   },
@@ -76,8 +76,8 @@
       39.814675,
       -104.820767
     ],
-    "capacity_kg": 137,
-    "current_load_kg": 46,
+    "capacity_kg": 420,
+    "current_load_kg": 40,
     "accepts_perishable": true,
     "accepts_non_perishable": true,
     "operating_hours": "9:00-18:00",
@@ -90,7 +90,7 @@
       39.757945,
       -104.924074
     ],
-    "capacity_kg": 207,
+    "capacity_kg": 500,
     "current_load_kg": 50,
     "accepts_perishable": true,
     "accepts_non_perishable": true,
