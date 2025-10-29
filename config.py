@@ -8,7 +8,7 @@ load_dotenv()
 
 # NVIDIA Nemotron Configuration
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
-NEMOTRON_MODEL = "nvidia/nemotron-4-340b-instruct"  # or nemotron-nano-9b-v2
+NEMOTRON_MODEL = "nvidia/nemotron-nano-12b-v2-vl"  # Updated model
 OPENROUTER_ENDPOINT = "https://openrouter.ai/api/v1/chat/completions"
 
 # System Configuration
