@@ -1,5 +1,5 @@
 """
-LLM Client for NVIDIA Nemotron via OpenRouter
+LLM Client for NVIDIA Nemotron via NVIDIA API
 """
 import os
 import requests
@@ -7,15 +7,15 @@ from typing import List, Dict, Optional, Generator
 import config
 
 class NemotronClient:
-    """Wrapper for Nemotron API calls via OpenRouter"""
+    """Wrapper for Nemotron API calls via NVIDIA API"""
     
     def __init__(self):
-        self.api_key = config.OPENROUTER_API_KEY
-        self.model = "nvidia/nemotron-nano-12b-v2-vl"  # Updated model
-        self.endpoint = config.OPENROUTER_ENDPOINT
+        self.api_key = config.NVIDIA_API_KEY
+        self.model = config.NEMOTRON_MODEL
+        self.endpoint = config.NVIDIA_ENDPOINT
         
         if not self.api_key:
-            raise ValueError("OPENROUTER_API_KEY not found in environment")
+            raise ValueError("NVIDIA_API_KEY not found in environment")
     
     def chat(self, 
              messages: List[Dict[str, str]], 
@@ -36,15 +36,14 @@ class NemotronClient:
             self.endpoint,
             headers={
                 "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json",
-                "HTTP-Referer": "https://feastguard.ai",  # Optional: for OpenRouter analytics
-                "X-Title": "FeastGuard.AI"
+                "Content-Type": "application/json"
             },
             json={
                 "model": self.model,
                 "messages": messages,
                 "temperature": temperature,
-                "max_tokens": max_tokens
+                "max_tokens": max_tokens,
+                "stream": False
             },
             timeout=30
         )

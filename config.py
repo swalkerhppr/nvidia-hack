@@ -7,9 +7,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # NVIDIA Nemotron Configuration
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "")
-NEMOTRON_MODEL = "nvidia/nemotron-nano-12b-v2-vl"  # Updated model
-OPENROUTER_ENDPOINT = "https://openrouter.ai/api/v1/chat/completions"
+NVIDIA_API_KEY = os.getenv("NVIDIA_API_KEY", "")
+NEMOTRON_MODEL = "nvidia/llama-3.1-nemotron-70b-instruct"  # NVIDIA hosted model
+NVIDIA_ENDPOINT = "https://integrate.api.nvidia.com/v1/chat/completions"
 
 # System Configuration
 MAX_EVENTS = 50

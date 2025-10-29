@@ -90,3 +90,47 @@ def find_nearby_recipients(event_location: Tuple[float, float],
     
     return nearby
 
+
+def calculate_routing_cost(distance_km: float,
+                          volume_kg: float,
+                          capacity_kg: float,
+                          is_perishable: bool = False) -> float:
+    """
+    Calculate routing cost score for a recipient match
+    
+    Lower scores are better. Factors in:
+    - Distance (primary factor)
+    - Perishability urgency (doubles distance cost for perishables)
+    - Capacity utilization (penalty for poor utilization)
+    
+    Args:
+        distance_km: Distance to recipient
+        volume_kg: Volume of food to deliver
+        capacity_kg: Recipient's available capacity
+        is_perishable: Whether food is perishable (urgent)
+    
+    Returns:
+        Cost score (lower is better)
+    """
+    # Base cost: distance
+    distance_cost = distance_km
+    
+    # Perishable urgency: double the distance cost for perishables
+    if is_perishable:
+        distance_cost *= 2.0
+    
+    # Capacity utilization penalty
+    # Prefer recipients who can use more of their capacity
+    utilization = volume_kg / capacity_kg if capacity_kg > 0 else 0
+    
+    # Penalty for poor utilization (under 30% or over 90%)
+    if utilization < 0.3:
+        utilization_penalty = 5.0 * (0.3 - utilization)
+    elif utilization > 0.9:
+        utilization_penalty = 5.0 * (utilization - 0.9)
+    else:
+        utilization_penalty = 0
+    
+    total_cost = distance_cost + utilization_penalty
+    
+    return round(total_cost, 2)

@@ -4,6 +4,7 @@ Message generation tool (Nemotron integration)
 import os
 import requests
 from typing import Optional
+import config
 
 def generate_outreach_message(recipient_name: str,
                               event_name: str,
@@ -27,7 +28,7 @@ def generate_outreach_message(recipient_name: str,
     category = food_details.get("category", "unknown")
     pickup_time = food_details.get("pickup_time", "end of event")
     
-    if use_nemotron and os.getenv("OPENROUTER_API_KEY"):
+    if use_nemotron and os.getenv("NVIDIA_API_KEY"):
         return _generate_with_nemotron(
             recipient_name, event_name, volume, category, pickup_time, urgency
         )
@@ -41,9 +42,9 @@ def _generate_with_nemotron(recipient_name: str, event_name: str,
                            volume: float, category: str, 
                            pickup_time: str, urgency: str) -> str:
     """
-    Generate message using NVIDIA Nemotron via OpenRouter
+    Generate message using NVIDIA Nemotron via NVIDIA API
     """
-    api_key = os.getenv("OPENROUTER_API_KEY")
+    api_key = config.NVIDIA_API_KEY
     
     urgency_context = {
         "high": "This is time-sensitive perishable food that must be picked up within 2 hours.",
@@ -74,16 +75,17 @@ Generate only the message text, no subject line or signatures."""
 
     try:
         response = requests.post(
-            "https://openrouter.ai/api/v1/chat/completions",
+            config.NVIDIA_ENDPOINT,
             headers={
                 "Authorization": f"Bearer {api_key}",
                 "Content-Type": "application/json"
             },
             json={
-                "model": "nvidia/nemotron-4-340b-instruct",
+                "model": config.NEMOTRON_MODEL,
                 "messages": [{"role": "user", "content": prompt}],
                 "temperature": 0.7,
-                "max_tokens": 300
+                "max_tokens": 300,
+                "stream": False
             },
             timeout=10
         )

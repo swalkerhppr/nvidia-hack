@@ -105,9 +105,9 @@ def main():
     
     # Check for API key
     import os
-    if not os.getenv("OPENROUTER_API_KEY"):
-        print("⚠️  Warning: OPENROUTER_API_KEY not set in environment")
-        print("   Agents will use fallback logic where possible\n")
+    if not os.getenv("NVIDIA_API_KEY"):
+        print("⚠️  Warning: NVIDIA_API_KEY not set in environment")
+        print("   Please set your NVIDIA API key in .env file\n")
     
     try:
         # Test agents in sequence
