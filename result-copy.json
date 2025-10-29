@@ -9,7 +9,7 @@
       "urgency": "low",
       "surplus_score": 1.0,
       "confidence": 0.95,
-      "reasoning": "**Analysis:**  \n1. High attendance (1,671) and a 7-hour buffet-style event increase surplus likelihood, as buffets often lead to overproduction.  \n2. Appetizers/finger foods are typically non-perishable (e.g., chips, bread, cured meats), reducing immediate waste concerns but allowing longer redistribution windows.  \n3. Urgency is moderate; surplus can wait days for redistribution due to non-perishable nature, but excess stockpiling should still be minimized."
+      "reasoning": "Here\u2019s a concise analysis:  \n1. **Surplus Likelihood**: High\u2014large buffet-style service for 1,671 guests over 7 hours increases overconsumption risk, especially with perishable appetizers/finger foods. Rainy weather may reduce attendance, further skewing supply-demand.  \n2. **Perishability**: Likely perishable (e.g., cheese boards, cold cuts, desserts), raising spoilage concerns post-event.  \n3. **Urgency**: Moderate\u2014non-perishables (e.g., packaged snacks) can wait, but perishables require swift redistribution within 24\u201348 hours to avoid waste. Prioritize cold items first."
     },
     {
       "event_id": "E022",
@@ -20,7 +20,7 @@
       "urgency": "low",
       "surplus_score": 1.0,
       "confidence": 0.95,
-      "reasoning": "Higher attendee count (1340) and buffet-style catering increase surplus risk due to overestimation and self-service waste. Snacks/beverages are mostly non-perishable, reducing urgency but not eliminating waste concerns. Mild weather supports attendance, but the 6-hour duration may lead to prolonged consumption, heightening surplus likelihood."
+      "reasoning": "**Analysis:**  \n1. **Surplus Factors:** The buffet setup encourages over-ordering to ensure enough food, while the 6-hour duration and mild weather (which likely boosted attendance) increase the risk of leftover perishables.  \n2. **Perishability:** Beverages (non-perishable) and snacks (mix of perishable [fresh items] and non-perishable [packaged]).  \n3. **Urgency:** High for perishable snacks; beverages can be stored longer. Redistribute perishables ASAP to avoid waste."
     },
     {
       "event_id": "E017",
@@ -31,7 +31,7 @@
       "urgency": "low",
       "surplus_score": 1.0,
       "confidence": 0.95,
-      "reasoning": "**Analysis:**  \n1. High attendee count (1214) and buffet-style catering increase surplus risk due to overestimation of demand.  \n2. Breakfast items and pastries are perishable (short shelf life) and non-perishable (e.g., packaged goods), but buffet setups often lead to waste from uneaten perishables.  \n3. Cold weather may reduce attendance or appetite, lowering consumption urgency. Perishables require rapid redistribution, while non-perishables allow flexibility."
+      "reasoning": "1. **Factors suggesting surplus**: High attendee count (1,214) and buffet-style catering create excess risk, compounded by a long 6-hour duration. Cold weather may reduce attendance, increasing surplus likelihood.  \n2. **Food type**: Breakfast items and pastries are perishable (e.g., dairy-based pastries, bread), requiring timely redistribution.  \n3. **Urgency**: High\u2014perishables lose value quickly, necessitating rapid donation or repurposing to minimize waste."
     },
     {
       "event_id": "E014",
@@ -42,7 +42,7 @@
       "urgency": "high",
       "surplus_score": 0.8574,
       "confidence": 0.95,
-      "reasoning": "1. The buffet-style catering with pizza and pasta increases surplus risk due to overordering and difficulty controlling portions. 2. Pizza and pasta are semi-perishable (safe for 2-3 days), allowing flexibility for redistribution. 3. Medium urgency: Rainy weather may reduce attendance, but the 6-hour duration creates a window to recover surplus before spoilage. Surplus likely, but manageable through donations or staff meals."
+      "reasoning": "**Analysis:**  \n1. **Surplus Factors:** The buffet style and 6-hour duration increase waste likelihood, as attendees may leave excess food. Rainy weather could reduce attendance or appetite, compounding surplus.  \n2. **Perishability:** Pizza and pasta are semi-perishable (safe for hours but degrade in quality), requiring timely redistribution.  \n3. **Urgency:** Moderate urgency\u2014redistribution should occur within 4\u20136 hours post-event to avoid spoilage, especially if weather impacts attendance.  \n\n**Prediction:** High surplus potential due to buffet waste patterns and weather-related attendance risks."
     },
     {
       "event_id": "E025",
@@ -53,7 +53,7 @@
       "urgency": "high",
       "surplus_score": 0.9253000000000001,
       "confidence": 0.95,
-      "reasoning": "1. **Factors for Surplus:**  \n- High attendee count (1151), buffet-style catering (self-serve), and a 4-hour duration increase the likelihood of overproduction and leftovers. Rainy weather may reduce attendance, further skewing food-to-participant ratios.  \n2. **Perishability:**  \n- Snacks (e.g., pastries, sandwiches) and beverages are partially perishable, requiring timely redistribution to avoid spoilage.  \n3. **Urgency:**  \n- Moderate urgency; surplus should be redistributed within 24 hours to ensure safety and usability, given the perishable nature of snacks and beverages."
+      "reasoning": "1. The large attendee count (1151) and buffet-style catering increase surplus likelihood, as buffets often lead to over-ordering. The 4-hour duration may also contribute to excess food being left uneaten.  \n2. While snacks and beverages are mostly non-perishable, some items (e.g., fresh pastries, dairy-based drinks) may have limited shelf life, requiring prompt redistribution.  \n3. Urgency is moderate: non-perishable items can be stored, but perishables should be redistributed within 24 hours to avoid waste. Rainy weather might reduce attendance slightly, further increasing surplus potential."
     }
   ],
   "routes": [
@@ -75,7 +75,7 @@
       "food_category": "perishable",
       "urgency": "high",
       "cost_score": 15.26,
-      "reasoning": "The Downtown Soup Kitchen is the optimal match due to its proximity (7.6km), which minimizes travel distance for perishable food requiring urgent pickup within 2 hours, and its significantly lower cost score (15.26) compared to alternatives. While other options exist, the combination of urgency, distance, and cost efficiency makes this recipient the most strategic choice.",
+      "reasoning": "The Downtown Soup Kitchen was selected as the optimal match due to its proximity (7.6km) and significantly lower cost score (15.26) compared to alternatives, which is critical for perishable food requiring urgent pickup within 2 hours. Prioritizing distance and cost ensures timely delivery while minimizing logistical expenses, aligning with the urgency and perishable nature of the food.",
       "alternatives": [
         {
           "name": "Denver Food Pantry Network",
@@ -107,7 +107,7 @@
       "food_category": "perishable",
       "urgency": "high",
       "cost_score": 65.2,
-      "reasoning": "This match is optimal because the Capitol Hill Food Bank is the closest recipient (32.6km), minimizing travel distance critical for perishable food's 2-hour urgency. Its high capacity and willingness to accept 532.51kg of perishables align with the surplus volume, ensuring efficient utilization despite a moderate cost score.",
+      "reasoning": "This match is optimal because the Capitol Hill Food Bank is the closest recipient (32.6km away), minimizing travel distance critical for perishable food (532.51kg) with high urgency needing pickup within 2 hours. The moderate cost score (65.2) reflects efficient logistics despite the food volume, ensuring timely delivery without excessive resource expenditure.",
       "alternatives": []
     }
   ],
@@ -117,12 +117,12 @@
       "recipient_name": "Downtown Soup Kitchen",
       "event_id": "E014",
       "event_name": "Business Lunch #14",
-      "message_content": "Hi [Recipient's Name],  \n\nWe\u2019re coordinating a surprise donation of **282.08kg of fresh perishable foods** from **Business Lunch #14** and need your team to pick it up **within the next 2 hours** to ensure it stays fresh. This is a time-sensitive opportunity to help those in need\u2014could you confirm your availability to receive it by [insert specific time]?  \n\nBest,  \nFeastGuard.AI",
+      "message_content": "Hello, I'm FeastGuard.AI. We have 282.08kg of perishable food from Business Lunch #14 ready for pickup within 2 hours. Your team can collect it promptly to ensure it reaches those in need. Could you please confirm your availability to pick it up within this timeframe?",
       "urgency_level": "high",
       "volume_kg": 282.08,
       "food_category": "perishable",
       "distance_km": 7.63,
-      "strategy_reasoning": "The message uses a **direct, time-sensitive tone** to convey urgency while maintaining professionalism, emphasizing the surprise and immediacy of the donation to prompt swift action.",
+      "strategy_reasoning": "The communication strategy prioritizes urgency and clarity by directly stating the food volume, perishable nature, and tight pickup window, while maintaining a professional yet approachable tone to prompt immediate action.",
       "estimated_send_time": "immediate"
     },
     {
@@ -130,12 +130,12 @@
       "recipient_name": "Capitol Hill Food Bank",
       "event_id": "E025",
       "event_name": "City Tech Conference #25",
-      "message_content": "We\u2019re excited to offer 532.51kg of perishable food from the City Tech Conference #25 to Capitol Hill Food Bank\u2014please confirm pickup within the next 2 hours to ensure timely delivery. This urgent donation requires immediate coordination due to its perishable nature. Let\u2019s connect quickly to finalize details and make an impact together.",
+      "message_content": "Hi [Recipient's Name],  \n\nWe\u2019re organizing a pickup for 532.51kg of perishable food from the City Tech Conference #25\u2014available for collection within the next 2 hours. Your team\u2019s expertise in handling perishables would be invaluable, and we\u2019d love to coordinate a quick turnaround to ensure this food reaches those in need. Could you confirm availability and logistics? Let\u2019s connect ASAP to make this happen!",
       "urgency_level": "high",
       "volume_kg": 532.51,
       "food_category": "perishable",
       "distance_km": 32.6,
-      "strategy_reasoning": "The outreach message uses a professional yet urgent tone to convey the availability of a large volume of perishable food, emphasizing the need for immediate action to ensure timely pickup and prevent waste.",
+      "strategy_reasoning": "The communication strategy prioritizes urgency and clarity by directly stating the logistics (volume, timing, and food type) while maintaining a professional yet approachable tone to prompt immediate action.",
       "estimated_send_time": "immediate"
     }
   ],

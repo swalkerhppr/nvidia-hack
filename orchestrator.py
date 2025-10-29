@@ -90,9 +90,6 @@ class FeastGuardOrchestrator:
         """
         current_idx = state["current_event_idx"]
         
-        # Debug logging
-        print(f"[DEBUG] Prediction node - Event {current_idx + 1}/{len(state['events'])}")
-        
         # Check if we're done
         if current_idx >= len(state["events"]):
             return {"workflow_status": "completed"}
@@ -149,7 +146,6 @@ class FeastGuardOrchestrator:
         """
         current_idx = state["current_event_idx"]
         new_idx = current_idx + 1
-        print(f"[DEBUG] Skip node - incrementing from {current_idx} to {new_idx}")
         
         log_msg = f"⚪ No surplus detected - moving to next event"
         
@@ -164,8 +160,6 @@ class FeastGuardOrchestrator:
         """
         current_idx = state["current_event_idx"]
         new_idx = current_idx + 1
-        
-        print(f"[DEBUG] Outreach node - incrementing from {current_idx} to {new_idx}")
         
         # Get latest route
         if not state["routes"]:
@@ -244,19 +238,15 @@ Messages Generated: {len(messages)}
         
         # Check if done processing
         if current_idx >= num_events:
-            print(f"[DEBUG] should_route: DONE ({current_idx} >= {num_events})")
             return "done"
         
         # Check if latest prediction has surplus
         if state["predictions"]:
             latest = state["predictions"][-1]
-            has_surplus = latest["has_surplus"]
-            print(f"[DEBUG] should_route: Event {current_idx} has_surplus={has_surplus}")
-            if has_surplus:
+            if latest["has_surplus"]:
                 return "route"
         
         # No surplus, increment and continue
-        print(f"[DEBUG] should_route: SKIP (no surplus)")
         return "skip"
     
     def should_continue(self, state: AgentState) -> Literal["continue", "done"]:
@@ -267,10 +257,8 @@ Messages Generated: {len(messages)}
         num_events = len(state["events"])
         
         if current_idx >= num_events:
-            print(f"[DEBUG] should_continue: DONE ({current_idx} >= {num_events})")
             return "done"
         
-        print(f"[DEBUG] should_continue: CONTINUE ({current_idx} < {num_events})")
         return "continue"
     
     def run(self, events: list, recipients: list) -> AgentState:
