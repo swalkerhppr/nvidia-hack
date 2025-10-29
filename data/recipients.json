@@ -1,0 +1,212 @@
+[
+  {
+    "recipient_id": "R01",
+    "name": "Downtown Soup Kitchen",
+    "location": [
+      39.694595,
+      -105.016703
+    ],
+    "capacity_kg": 248,
+    "current_load_kg": 1,
+    "accepts_perishable": true,
+    "accepts_non_perishable": true,
+    "operating_hours": "6:00-21:00",
+    "contact_available": true
+  },
+  {
+    "recipient_id": "R02",
+    "name": "Westside Community Pantry",
+    "location": [
+      39.789642,
+      -105.093243
+    ],
+    "capacity_kg": 234,
+    "current_load_kg": 40,
+    "accepts_perishable": true,
+    "accepts_non_perishable": false,
+    "operating_hours": "7:00-20:00",
+    "contact_available": true
+  },
+  {
+    "recipient_id": "R03",
+    "name": "Highland Family Shelter",
+    "location": [
+      39.884304,
+      -104.893572
+    ],
+    "capacity_kg": 79,
+    "current_load_kg": 32,
+    "accepts_perishable": true,
+    "accepts_non_perishable": true,
+    "operating_hours": "7:00-17:00",
+    "contact_available": true
+  },
+  {
+    "recipient_id": "R04",
+    "name": "Capitol Hill Food Bank",
+    "location": [
+      39.78495,
+      -104.785068
+    ],
+    "capacity_kg": 221,
+    "current_load_kg": 47,
+    "accepts_perishable": true,
+    "accepts_non_perishable": true,
+    "operating_hours": "8:00-20:00",
+    "contact_available": true
+  },
+  {
+    "recipient_id": "R05",
+    "name": "Aurora Community Kitchen",
+    "location": [
+      39.717636,
+      -104.751776
+    ],
+    "capacity_kg": 296,
+    "current_load_kg": 99,
+    "accepts_perishable": true,
+    "accepts_non_perishable": false,
+    "operating_hours": "6:00-19:00",
+    "contact_available": true
+  },
+  {
+    "recipient_id": "R06",
+    "name": "Northside Rescue Mission",
+    "location": [
+      39.814675,
+      -104.820767
+    ],
+    "capacity_kg": 137,
+    "current_load_kg": 46,
+    "accepts_perishable": true,
+    "accepts_non_perishable": true,
+    "operating_hours": "9:00-18:00",
+    "contact_available": true
+  },
+  {
+    "recipient_id": "R07",
+    "name": "Denver Food Pantry Network",
+    "location": [
+      39.757945,
+      -104.924074
+    ],
+    "capacity_kg": 207,
+    "current_load_kg": 50,
+    "accepts_perishable": true,
+    "accepts_non_perishable": true,
+    "operating_hours": "7:00-18:00",
+    "contact_available": true
+  },
+  {
+    "recipient_id": "R08",
+    "name": "Five Points Community Center",
+    "location": [
+      39.802572,
+      -105.117078
+    ],
+    "capacity_kg": 61,
+    "current_load_kg": 2,
+    "accepts_perishable": false,
+    "accepts_non_perishable": true,
+    "operating_hours": "7:00-21:00",
+    "contact_available": true
+  },
+  {
+    "recipient_id": "R09",
+    "name": "Lakewood Family Services",
+    "location": [
+      39.804237,
+      -104.872253
+    ],
+    "capacity_kg": 210,
+    "current_load_kg": 16,
+    "accepts_perishable": true,
+    "accepts_non_perishable": true,
+    "operating_hours": "6:00-17:00",
+    "contact_available": true
+  },
+  {
+    "recipient_id": "R10",
+    "name": "Englewood Helping Hands",
+    "location": [
+      39.77369,
+      -104.763496
+    ],
+    "capacity_kg": 98,
+    "current_load_kg": 41,
+    "accepts_perishable": true,
+    "accepts_non_perishable": true,
+    "operating_hours": "6:00-17:00",
+    "contact_available": true
+  },
+  {
+    "recipient_id": "R11",
+    "name": "Cherry Creek Outreach",
+    "location": [
+      39.817708,
+      -104.95899
+    ],
+    "capacity_kg": 104,
+    "current_load_kg": 1,
+    "accepts_perishable": true,
+    "accepts_non_perishable": true,
+    "operating_hours": "8:00-18:00",
+    "contact_available": true
+  },
+  {
+    "recipient_id": "R12",
+    "name": "Berkeley Neighborhood Kitchen",
+    "location": [
+      39.886151,
+      -104.883123
+    ],
+    "capacity_kg": 153,
+    "current_load_kg": 52,
+    "accepts_perishable": true,
+    "accepts_non_perishable": true,
+    "operating_hours": "7:00-20:00",
+    "contact_available": true
+  },
+  {
+    "recipient_id": "R13",
+    "name": "Washington Park Community Center",
+    "location": [
+      39.844198,
+      -104.884834
+    ],
+    "capacity_kg": 120,
+    "current_load_kg": 49,
+    "accepts_perishable": true,
+    "accepts_non_perishable": false,
+    "operating_hours": "7:00-21:00",
+    "contact_available": true
+  },
+  {
+    "recipient_id": "R14",
+    "name": "RiNo District Food Hub",
+    "location": [
+      39.854934,
+      -105.010513
+    ],
+    "capacity_kg": 203,
+    "current_load_kg": 96,
+    "accepts_perishable": true,
+    "accepts_non_perishable": false,
+    "operating_hours": "8:00-19:00",
+    "contact_available": true
+  },
+  {
+    "recipient_id": "R15",
+    "name": "Green Valley Food Bank",
+    "location": [
+      39.879998,
+      -104.972522
+    ],
+    "capacity_kg": 276,
+    "current_load_kg": 6,
+    "accepts_perishable": true,
+    "accepts_non_perishable": false,
+    "operating_hours": "6:00-18:00",
+    "contact_available": true
+  }
+]

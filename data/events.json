@@ -1,0 +1,542 @@
+[
+  {
+    "event_id": "E001",
+    "name": "Trade Show #1",
+    "attendees": 1797,
+    "catering_type": "snacks",
+    "food_type": [
+      "breakfast items",
+      "pastries"
+    ],
+    "duration_hours": 2,
+    "weather": "rainy",
+    "date": "2025-11-02",
+    "location": [
+      39.826218,
+      -104.7558
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E002",
+    "name": "Religious Gathering #2",
+    "attendees": 663,
+    "catering_type": "family_style",
+    "food_type": [
+      "pizza",
+      "pasta"
+    ],
+    "duration_hours": 2,
+    "weather": "hot",
+    "date": "2025-11-09",
+    "location": [
+      39.860666,
+      -105.108108
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E003",
+    "name": "Business Lunch #3",
+    "attendees": 586,
+    "catering_type": "cocktail",
+    "food_type": [
+      "sandwiches",
+      "salads"
+    ],
+    "duration_hours": 8,
+    "weather": "mild",
+    "date": "2025-10-31",
+    "location": [
+      39.743516,
+      -104.908747
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E004",
+    "name": "Holiday Party #4",
+    "attendees": 1671,
+    "catering_type": "buffet",
+    "food_type": [
+      "appetizers",
+      "finger foods"
+    ],
+    "duration_hours": 7,
+    "weather": "rainy",
+    "date": "2025-10-31",
+    "location": [
+      39.879791,
+      -104.893994
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E005",
+    "name": "Food Festival #5",
+    "attendees": 900,
+    "catering_type": "snacks",
+    "food_type": [
+      "breakfast items",
+      "pastries"
+    ],
+    "duration_hours": 3,
+    "weather": "hot",
+    "date": "2025-11-08",
+    "location": [
+      39.831838,
+      -104.834017
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E006",
+    "name": "Corporate Meeting #6",
+    "attendees": 1284,
+    "catering_type": "snacks",
+    "food_type": [
+      "snacks",
+      "beverages"
+    ],
+    "duration_hours": 4,
+    "weather": "rainy",
+    "date": "2025-10-30",
+    "location": [
+      39.75325,
+      -104.83464
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E007",
+    "name": "Sports Tournament #7",
+    "attendees": 1930,
+    "catering_type": "cocktail",
+    "food_type": [
+      "pizza",
+      "pasta"
+    ],
+    "duration_hours": 4,
+    "weather": "hot",
+    "date": "2025-11-12",
+    "location": [
+      39.864837,
+      -104.853994
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E008",
+    "name": "School Event #8",
+    "attendees": 1753,
+    "catering_type": "cocktail",
+    "food_type": [
+      "barbecue",
+      "sides"
+    ],
+    "duration_hours": 2,
+    "weather": "mild",
+    "date": "2025-11-02",
+    "location": [
+      39.757535,
+      -105.03541
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E009",
+    "name": "Business Lunch #9",
+    "attendees": 1926,
+    "catering_type": "snacks",
+    "food_type": [
+      "breakfast items",
+      "pastries"
+    ],
+    "duration_hours": 2,
+    "weather": "hot",
+    "date": "2025-11-01",
+    "location": [
+      39.780533,
+      -105.079743
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E010",
+    "name": "Wedding Reception #10",
+    "attendees": 1428,
+    "catering_type": "cocktail",
+    "food_type": [
+      "dinner entrees",
+      "vegetables"
+    ],
+    "duration_hours": 3,
+    "weather": "cold",
+    "date": "2025-11-01",
+    "location": [
+      39.638878,
+      -105.136029
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E011",
+    "name": "Corporate Meeting #11",
+    "attendees": 679,
+    "catering_type": "buffet",
+    "food_type": [
+      "snacks",
+      "beverages"
+    ],
+    "duration_hours": 4,
+    "weather": "hot",
+    "date": "2025-11-12",
+    "location": [
+      39.834271,
+      -105.146732
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E012",
+    "name": "Business Lunch #12",
+    "attendees": 554,
+    "catering_type": "buffet",
+    "food_type": [
+      "breakfast items",
+      "pastries"
+    ],
+    "duration_hours": 4,
+    "weather": "hot",
+    "date": "2025-11-07",
+    "location": [
+      39.604146,
+      -104.75227
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E013",
+    "name": "Religious Gathering #13",
+    "attendees": 1056,
+    "catering_type": "family_style",
+    "food_type": [
+      "breakfast items",
+      "pastries"
+    ],
+    "duration_hours": 8,
+    "weather": "mild",
+    "date": "2025-11-05",
+    "location": [
+      39.773689,
+      -104.829886
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E014",
+    "name": "Business Lunch #14",
+    "attendees": 658,
+    "catering_type": "buffet",
+    "food_type": [
+      "pizza",
+      "pasta"
+    ],
+    "duration_hours": 6,
+    "weather": "rainy",
+    "date": "2025-11-08",
+    "location": [
+      39.631654,
+      -104.981101
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E015",
+    "name": "Corporate Meeting #15",
+    "attendees": 1019,
+    "catering_type": "buffet",
+    "food_type": [
+      "snacks",
+      "beverages"
+    ],
+    "duration_hours": 3,
+    "weather": "hot",
+    "date": "2025-10-31",
+    "location": [
+      39.827197,
+      -104.889521
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E016",
+    "name": "Holiday Party #16",
+    "attendees": 1189,
+    "catering_type": "cocktail",
+    "food_type": [
+      "barbecue",
+      "sides"
+    ],
+    "duration_hours": 7,
+    "weather": "mild",
+    "date": "2025-11-06",
+    "location": [
+      39.749673,
+      -105.086549
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E017",
+    "name": "University Graduation #17",
+    "attendees": 1214,
+    "catering_type": "buffet",
+    "food_type": [
+      "breakfast items",
+      "pastries"
+    ],
+    "duration_hours": 6,
+    "weather": "cold",
+    "date": "2025-11-11",
+    "location": [
+      39.628997,
+      -105.045351
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E018",
+    "name": "University Graduation #18",
+    "attendees": 858,
+    "catering_type": "snacks",
+    "food_type": [
+      "dinner entrees",
+      "vegetables"
+    ],
+    "duration_hours": 7,
+    "weather": "cold",
+    "date": "2025-11-11",
+    "location": [
+      39.630526,
+      -105.073332
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E019",
+    "name": "City Tech Conference #19",
+    "attendees": 1299,
+    "catering_type": "family_style",
+    "food_type": [
+      "appetizers",
+      "finger foods"
+    ],
+    "duration_hours": 4,
+    "weather": "mild",
+    "date": "2025-11-01",
+    "location": [
+      39.683609,
+      -105.080691
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E020",
+    "name": "Corporate Meeting #20",
+    "attendees": 1671,
+    "catering_type": "snacks",
+    "food_type": [
+      "appetizers",
+      "finger foods"
+    ],
+    "duration_hours": 3,
+    "weather": "hot",
+    "date": "2025-11-03",
+    "location": [
+      39.698441,
+      -104.990013
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E021",
+    "name": "Music Festival #21",
+    "attendees": 1969,
+    "catering_type": "plated",
+    "food_type": [
+      "buffet",
+      "mixed cuisine"
+    ],
+    "duration_hours": 4,
+    "weather": "mild",
+    "date": "2025-11-08",
+    "location": [
+      39.889582,
+      -105.14738
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E022",
+    "name": "Networking Mixer #22",
+    "attendees": 1340,
+    "catering_type": "buffet",
+    "food_type": [
+      "snacks",
+      "beverages"
+    ],
+    "duration_hours": 6,
+    "weather": "mild",
+    "date": "2025-10-31",
+    "location": [
+      39.872835,
+      -104.812949
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E023",
+    "name": "Corporate Meeting #23",
+    "attendees": 1242,
+    "catering_type": "snacks",
+    "food_type": [
+      "breakfast items",
+      "pastries"
+    ],
+    "duration_hours": 7,
+    "weather": "rainy",
+    "date": "2025-11-08",
+    "location": [
+      39.883829,
+      -104.888606
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E024",
+    "name": "City Tech Conference #24",
+    "attendees": 668,
+    "catering_type": "snacks",
+    "food_type": [
+      "dinner entrees",
+      "vegetables"
+    ],
+    "duration_hours": 4,
+    "weather": "cold",
+    "date": "2025-11-01",
+    "location": [
+      39.841555,
+      -104.809042
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E025",
+    "name": "City Tech Conference #25",
+    "attendees": 1151,
+    "catering_type": "buffet",
+    "food_type": [
+      "snacks",
+      "beverages"
+    ],
+    "duration_hours": 4,
+    "weather": "rainy",
+    "date": "2025-10-29",
+    "location": [
+      39.619934,
+      -105.100062
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E026",
+    "name": "Wedding Reception #26",
+    "attendees": 590,
+    "catering_type": "snacks",
+    "food_type": [
+      "snacks",
+      "beverages"
+    ],
+    "duration_hours": 5,
+    "weather": "mild",
+    "date": "2025-11-01",
+    "location": [
+      39.859289,
+      -104.917285
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E027",
+    "name": "University Graduation #27",
+    "attendees": 702,
+    "catering_type": "cocktail",
+    "food_type": [
+      "dinner entrees",
+      "vegetables"
+    ],
+    "duration_hours": 6,
+    "weather": "rainy",
+    "date": "2025-11-06",
+    "location": [
+      39.626898,
+      -105.142028
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E028",
+    "name": "University Graduation #28",
+    "attendees": 295,
+    "catering_type": "cocktail",
+    "food_type": [
+      "sandwiches",
+      "salads"
+    ],
+    "duration_hours": 7,
+    "weather": "hot",
+    "date": "2025-11-02",
+    "location": [
+      39.872798,
+      -104.836402
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E029",
+    "name": "Networking Mixer #29",
+    "attendees": 1494,
+    "catering_type": "cocktail",
+    "food_type": [
+      "pizza",
+      "pasta"
+    ],
+    "duration_hours": 3,
+    "weather": "cold",
+    "date": "2025-11-04",
+    "location": [
+      39.624352,
+      -105.094519
+    ],
+    "status": "upcoming"
+  },
+  {
+    "event_id": "E030",
+    "name": "Holiday Party #30",
+    "attendees": 1864,
+    "catering_type": "snacks",
+    "food_type": [
+      "barbecue",
+      "sides"
+    ],
+    "duration_hours": 4,
+    "weather": "rainy",
+    "date": "2025-11-05",
+    "location": [
+      39.89424,
+      -104.764149
+    ],
+    "status": "upcoming"
+  }
+]
