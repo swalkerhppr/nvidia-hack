@@ -1,0 +1,104 @@
+{
+  "predictions": [
+    {
+      "event_id": "E004",
+      "event_name": "Holiday Party #4",
+      "has_surplus": false,
+      "predicted_kg": 835.5,
+      "category": "none",
+      "urgency": "low",
+      "surplus_score": 1.0,
+      "confidence": 0.95,
+      "reasoning": "1. The large attendee count (1671) and buffet catering type increase surplus likelihood, as buffets often lead to overproduction. The 7-hour duration further raises waste potential due to extended service time.  \n2. Since the event focuses on appetizers and finger foods (typically non-perishable or shelf-stable items like crackers, chips, or pre-packaged snacks), perishability is lower, but fresh options (e.g., cut fruits) could still spoil.  \n3. Urgency is moderate: non-perishable items allow slower redistribution, but perishables require prompt action. Rainy weather may reduce attendance, slightly easing demand."
+    },
+    {
+      "event_id": "E022",
+      "event_name": "Networking Mixer #22",
+      "has_surplus": false,
+      "predicted_kg": 670.0,
+      "category": "none",
+      "urgency": "low",
+      "surplus_score": 1.0,
+      "confidence": 0.95,
+      "reasoning": "1340 attendees with a buffet catering style over 6 hours create high surplus potential due to the self-service nature encouraging over-serving. With mild weather ensuring good attendance, the combination of snacks (perishable) and beverages (non-perishable) means significant waste likely occurs, particularly with snack items. Redistribution urgency is moderate-high as perishable snacks may need timely handling, though beverages can be stored longer."
+    },
+    {
+      "event_id": "E017",
+      "event_name": "University Graduation #17",
+      "has_surplus": false,
+      "predicted_kg": 607.0,
+      "category": "none",
+      "urgency": "low",
+      "surplus_score": 1.0,
+      "confidence": 0.95,
+      "reasoning": "1. High attendance (1214 people) and buffet-style catering increase surplus risk due to over-preparation and self-service inefficiencies.  \n2. Breakfast items and pastries are moderately perishable (short shelf life if left unrefrigerated), raising waste concerns.  \n3. Urgency is moderate: surplus should be redistributed within 2-4 hours post-event to minimize spoilage, especially in cold weather where attendance may dip but leftovers could still spoil quickly."
+    },
+    {
+      "event_id": "E014",
+      "event_name": "Business Lunch #14",
+      "has_surplus": true,
+      "predicted_kg": 282.08,
+      "category": "perishable",
+      "urgency": "high",
+      "surplus_score": 0.8574,
+      "confidence": 0.95,
+      "reasoning": "1. High attendee count (658) and buffet catering increase surplus risk due to overestimation and self-service waste.  \n2. Pizza and pasta are semi-perishable (safe for 2-3 days), allowing moderate redistribution urgency.  \n3. Rainy weather may reduce attendance, but 6-hour duration and buffet style still suggest potential surplus needing prompt action."
+    },
+    {
+      "event_id": "E025",
+      "event_name": "City Tech Conference #25",
+      "has_surplus": true,
+      "predicted_kg": 532.51,
+      "category": "perishable",
+      "urgency": "high",
+      "surplus_score": 0.9253000000000001,
+      "confidence": 0.95,
+      "reasoning": "This event has a high potential for food surplus due to the large attendee count (1151), buffet catering (which often leads to overproduction), and 4-hour duration (allowing time for leftovers). The rainy weather may reduce attendance slightly, further increasing surplus likelihood. Since beverages and many snacks are non-perishable, urgency for redistribution is moderate but should still be addressed within 1-2 days to avoid waste."
+    }
+  ],
+  "routes": [
+    {
+      "event_id": "E014",
+      "event_name": "Business Lunch #14",
+      "recipient_id": null,
+      "recipient_name": "NO MATCH",
+      "distance_km": 0,
+      "volume_kg": 282.08,
+      "food_category": "perishable",
+      "reasoning": "Unable to route: No suitable candidates",
+      "alternatives": []
+    },
+    {
+      "event_id": "E025",
+      "event_name": "City Tech Conference #25",
+      "recipient_id": null,
+      "recipient_name": "NO MATCH",
+      "distance_km": 0,
+      "volume_kg": 532.51,
+      "food_category": "perishable",
+      "reasoning": "Unable to route: No suitable candidates",
+      "alternatives": []
+    }
+  ],
+  "messages": [],
+  "logs": [
+    "\n============================================================\n\ud83d\udd0d Processing Event 1/5: Holiday Party #4\n============================================================",
+    "[Prediction Agent] \u2705 Holiday Party #4: No significant surplus expected",
+    "\u26aa No surplus detected - moving to next event",
+    "\n============================================================\n\ud83d\udd0d Processing Event 2/5: Networking Mixer #22\n============================================================",
+    "[Prediction Agent] \u2705 Networking Mixer #22: No significant surplus expected",
+    "\u26aa No surplus detected - moving to next event",
+    "\n============================================================\n\ud83d\udd0d Processing Event 3/5: University Graduation #17\n============================================================",
+    "[Prediction Agent] \u2705 University Graduation #17: No significant surplus expected",
+    "\u26aa No surplus detected - moving to next event",
+    "\n============================================================\n\ud83d\udd0d Processing Event 4/5: Business Lunch #14\n============================================================",
+    "[Prediction Agent] \ud83d\udd34 Business Lunch #14: 282.08kg perishable surplus predicted (confidence: 95%)",
+    "[Routing Agent] \u26a0\ufe0f  Business Lunch #14: Unable to route: No suitable candidates",
+    "[Outreach Agent] \u26aa No recipient matched",
+    "\n============================================================\n\ud83d\udd0d Processing Event 5/5: City Tech Conference #25\n============================================================",
+    "[Prediction Agent] \ud83d\udd34 City Tech Conference #25: 532.51kg perishable surplus predicted (confidence: 95%)",
+    "[Routing Agent] \u26a0\ufe0f  City Tech Conference #25: Unable to route: No suitable candidates",
+    "[Outreach Agent] \u26aa No recipient matched",
+    "\n============================================================\n\ud83d\udcca WORKFLOW SUMMARY\n============================================================\nEvents Processed: 5\nEvents with Surplus: 2\nSuccessful Routes: 0\nTotal Food Rescued: 0kg\n\nFood Categories:\n  - Perishable: 0 routes\n  - Non-perishable: 0 routes\n\nMessages Generated: 0\n============================================================\n"
+  ]
+}

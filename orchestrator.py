@@ -39,6 +39,7 @@ class FeastGuardOrchestrator:
         workflow.add_node("prediction", self.prediction_node)
         workflow.add_node("routing", self.routing_node)
         workflow.add_node("outreach", self.outreach_node)
+        workflow.add_node("skip", self.skip_node)  # New node for no-surplus events
         workflow.add_node("summary", self.summary_node)
         
         # Define edges
@@ -50,7 +51,17 @@ class FeastGuardOrchestrator:
             self.should_route,
             {
                 "route": "routing",
-                "skip": "prediction",  # Loop back for next event
+                "skip": "skip",  # Go to skip node to increment counter
+                "done": "summary"
+            }
+        )
+        
+        # After skip: loop back to next event or finish
+        workflow.add_conditional_edges(
+            "skip",
+            self.should_continue,
+            {
+                "continue": "prediction",
                 "done": "summary"
             }
         )
@@ -78,6 +89,9 @@ class FeastGuardOrchestrator:
         Run Prediction Agent on current event
         """
         current_idx = state["current_event_idx"]
+        
+        # Debug logging
+        print(f"[DEBUG] Prediction node - Event {current_idx + 1}/{len(state['events'])}")
         
         # Check if we're done
         if current_idx >= len(state["events"]):
@@ -129,13 +143,36 @@ class FeastGuardOrchestrator:
             "agent_logs": [log_result]
         }
     
+    def skip_node(self, state: AgentState) -> Dict:
+        """
+        Handle events with no surplus - increment counter and continue
+        """
+        current_idx = state["current_event_idx"]
+        new_idx = current_idx + 1
+        print(f"[DEBUG] Skip node - incrementing from {current_idx} to {new_idx}")
+        
+        log_msg = f"⚪ No surplus detected - moving to next event"
+        
+        return {
+            "agent_logs": [log_msg],
+            "current_event_idx": new_idx
+        }
+    
     def outreach_node(self, state: AgentState) -> Dict:
         """
         Run Outreach Agent on latest route
         """
+        current_idx = state["current_event_idx"]
+        new_idx = current_idx + 1
+        
+        print(f"[DEBUG] Outreach node - incrementing from {current_idx} to {new_idx}")
+        
         # Get latest route
         if not state["routes"]:
-            return {"agent_logs": [self.outreach_agent.log("⚪ No message needed")]}
+            return {
+                "agent_logs": [self.outreach_agent.log("⚪ No message needed")],
+                "current_event_idx": new_idx  # ALWAYS increment!
+            }
         
         route = state["routes"][-1]
         
@@ -143,7 +180,10 @@ class FeastGuardOrchestrator:
         message = self.outreach_agent.generate_message(route)
         
         if message is None:
-            return {"agent_logs": [self.outreach_agent.log("⚪ No recipient matched")]}
+            return {
+                "agent_logs": [self.outreach_agent.log("⚪ No recipient matched")],
+                "current_event_idx": new_idx  # ALWAYS increment!
+            }
         
         # Format log
         log_result = self.outreach_agent.format_log(message)
@@ -152,7 +192,7 @@ class FeastGuardOrchestrator:
         return {
             "messages": [message],
             "agent_logs": [log_result],
-            "current_event_idx": state["current_event_idx"] + 1
+            "current_event_idx": new_idx
         }
     
     def summary_node(self, state: AgentState) -> Dict:
@@ -199,25 +239,38 @@ Messages Generated: {len(messages)}
         """
         Decide if we should route or skip
         """
+        current_idx = state["current_event_idx"]
+        num_events = len(state["events"])
+        
         # Check if done processing
-        if state["current_event_idx"] >= len(state["events"]):
+        if current_idx >= num_events:
+            print(f"[DEBUG] should_route: DONE ({current_idx} >= {num_events})")
             return "done"
         
         # Check if latest prediction has surplus
         if state["predictions"]:
             latest = state["predictions"][-1]
-            if latest["has_surplus"]:
+            has_surplus = latest["has_surplus"]
+            print(f"[DEBUG] should_route: Event {current_idx} has_surplus={has_surplus}")
+            if has_surplus:
                 return "route"
         
         # No surplus, increment and continue
+        print(f"[DEBUG] should_route: SKIP (no surplus)")
         return "skip"
     
     def should_continue(self, state: AgentState) -> Literal["continue", "done"]:
         """
         Decide if we should process more events
         """
-        if state["current_event_idx"] >= len(state["events"]):
+        current_idx = state["current_event_idx"]
+        num_events = len(state["events"])
+        
+        if current_idx >= num_events:
+            print(f"[DEBUG] should_continue: DONE ({current_idx} >= {num_events})")
             return "done"
+        
+        print(f"[DEBUG] should_continue: CONTINUE ({current_idx} < {num_events})")
         return "continue"
     
     def run(self, events: list, recipients: list) -> AgentState:
@@ -234,8 +287,13 @@ Messages Generated: {len(messages)}
         # Create initial state
         initial_state = create_initial_state(events, recipients)
         
-        # Execute workflow
-        final_state = self.workflow.invoke(initial_state)
+        # Execute workflow with increased recursion limit
+        # Each event can take 3-4 nodes (prediction, routing, outreach, skip)
+        # So 5 events * 4 = 20 nodes minimum, set to 100 for safety
+        final_state = self.workflow.invoke(
+            initial_state,
+            config={"recursion_limit": 100}
+        )
         
         return final_state
 
