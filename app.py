@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 from config import MAP_CENTER, MAP_ZOOM
 import llm_client
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # Set page config
 st.set_page_config(
@@ -54,17 +54,20 @@ def geocode_address(address, zipcode):
         pass
     return None
 
-def search_events_in_zipcode(zipcode):
-    """Search for events in a zipcode area using LLM with web search knowledge"""
+def search_events_in_zipcode(zipcode, start_date=None, end_date=None):
+    """Search for events in a zipcode area using NVIDIA Nemotron LLM"""
     try:
-        # Use LLM to search and extract structured data
-        # The LLM model has knowledge about events and can search conceptually
+        # Use NVIDIA Nemotron LLM to search and extract structured data
         client = llm_client.get_client()
         system_prompt = """You are a data extraction specialist with access to web information. 
 Search for and extract structured event information based on location queries.
 Return a JSON array of events, each with: name, location (address or venue name), date, estimated_attendees."""
         
-        user_prompt = f"""Search the web for upcoming events, conferences, or gatherings in zipcode {zipcode}.
+        date_filter = ""
+        if start_date and end_date:
+            date_filter = f" between {start_date} and {end_date}"
+        
+        user_prompt = f"""Search the web for upcoming events, conferences, or gatherings in zipcode {zipcode}{date_filter}.
 Find 3-5 real upcoming events and return them in JSON format:
 [
   {{
@@ -118,8 +121,13 @@ Only return valid JSON. Use actual event information if possible, or realistic e
         try:
             client = llm_client.get_client()
             system_prompt = """You are a data extraction specialist. Generate realistic event information based on location."""
-            user_prompt = f"""Generate 3-5 realistic upcoming events that might occur in zipcode {zipcode}. 
-Return JSON array with name, location (venue name), date (YYYY-MM-DD), estimated_attendees."""
+            
+            date_constraint = ""
+            if start_date and end_date:
+                date_constraint = f" with dates between {start_date} and {end_date}"
+            
+            user_prompt = f"""Generate 3-5 realistic upcoming events that might occur in zipcode {zipcode}{date_constraint}. 
+Return JSON array with name, location (venue name), date (YYYY-MM-DD format within the specified range), estimated_attendees."""
             response = client.chat_with_system(system_prompt, user_prompt, temperature=0.5)
             
             if "```json" in response:
@@ -149,14 +157,19 @@ Return JSON array with name, location (venue name), date (YYYY-MM-DD), estimated
                         "status": "upcoming"
                     })
             return formatted_events
+        except ValueError as e2:
+            # API key missing
+            st.error(f"❌ NVIDIA API key not configured: {str(e2)}")
+            st.info("Please set NVIDIA_API_KEY in your .env file")
+            return []
         except Exception as e2:
             st.error(f"Error searching events: {str(e2)}")
             return []
 
 def search_recipients_in_zipcode(zipcode):
-    """Search for food banks and recipients in a zipcode area using LLM with web search knowledge"""
+    """Search for food banks and recipients in a zipcode area using NVIDIA Nemotron LLM"""
     try:
-        # Use LLM to search and extract structured data
+        # Use NVIDIA Nemotron LLM to search and extract structured data
         client = llm_client.get_client()
         system_prompt = """You are a data extraction specialist with access to web information.
 Search for and extract information about food banks, soup kitchens, and food pantries.
@@ -244,6 +257,11 @@ Return JSON array with name, location (address), estimated_capacity_kg."""
                         "contact_available": True
                     })
             return formatted_recipients
+        except ValueError as e2:
+            # API key missing
+            st.error(f"❌ NVIDIA API key not configured: {str(e2)}")
+            st.info("Please set NVIDIA_API_KEY in your .env file")
+            return []
         except Exception as e2:
             st.error(f"Error searching recipients: {str(e2)}")
             return []
@@ -254,16 +272,12 @@ if 'searched_events' not in st.session_state:
 if 'searched_recipients' not in st.session_state:
     st.session_state.searched_recipients = []
 
-# Load mock data as fallback
+# Load mock data as fallback (only loaded once)
 events_file = Path("data/events.json")
 recipients_file = Path("data/recipients.json")
 
 default_events = load_json_file(events_file) if events_file.exists() else []
 default_recipients = load_json_file(recipients_file) if recipients_file.exists() else []
-
-# Use searched data if available, otherwise use default
-events = st.session_state.searched_events if st.session_state.searched_events else default_events
-recipients = st.session_state.searched_recipients if st.session_state.searched_recipients else default_recipients
 
 # Title
 st.title("📍 Replate")
@@ -274,8 +288,49 @@ col1, col2 = st.columns([1, 2])
 
 with col1:
     st.markdown("### Data Overview")
-    st.metric("Events", len(events))
-    st.metric("Recipients", len(recipients))
+    
+    # Show real searched data counts, or defaults if no search yet
+    searched_events_count = len(st.session_state.searched_events) if st.session_state.searched_events else 0
+    searched_recipients_count = len(st.session_state.searched_recipients) if st.session_state.searched_recipients else 0
+    
+    if searched_events_count > 0 or searched_recipients_count > 0:
+        # Show searched data
+        st.metric("Events Found", searched_events_count)
+        st.metric("Recipients Found", searched_recipients_count)
+    else:
+        # Show default data (will be defined below)
+        st.metric("Events", "—", help="Search to find real events")
+        st.metric("Recipients", "—", help="Search to find real recipients")
+    
+    st.markdown("---")
+    
+    # Date range slider for events
+    st.markdown("### Search Filters")
+    
+    # Get today's date
+    today = datetime.now().date()
+    # Set default range: today to 90 days out
+    default_end = today + timedelta(days=90)
+    
+    date_range = st.date_input(
+        "Event Date Range",
+        value=(today, default_end),
+        min_value=today,
+        max_value=today + timedelta(days=365),
+        key="date_range_input"
+    )
+    
+    # Extract start and end dates
+    if isinstance(date_range, tuple) and len(date_range) == 2:
+        start_date = date_range[0]
+        end_date = date_range[1]
+    elif isinstance(date_range, (list, tuple)) and len(date_range) == 2:
+        start_date = date_range[0]
+        end_date = date_range[1]
+    else:
+        # Single date selected, use it as both start and end
+        start_date = date_range
+        end_date = date_range
     
     st.markdown("---")
     
@@ -312,9 +367,24 @@ if button_clicked:
                 st.session_state.map_center = coordinates
                 st.session_state.map_zoom = 12
                 
-                # Search for events
+                # Search for events with date range
                 st.info("Searching for events...")
-                found_events = search_events_in_zipcode(zipcode)
+                found_events = search_events_in_zipcode(zipcode, start_date, end_date)
+                
+                # Filter events by date range if date filtering was applied
+                if start_date and end_date:
+                    filtered_events = []
+                    for event in found_events:
+                        event_date_str = event.get('date', '')
+                        try:
+                            event_date = datetime.strptime(event_date_str, "%Y-%m-%d").date()
+                            if start_date <= event_date <= end_date:
+                                filtered_events.append(event)
+                        except (ValueError, TypeError):
+                            # If date parsing fails, include it anyway
+                            filtered_events.append(event)
+                    found_events = filtered_events
+                
                 st.session_state.searched_events = found_events
                 
                 # Search for recipients
@@ -322,16 +392,18 @@ if button_clicked:
                 found_recipients = search_recipients_in_zipcode(zipcode)
                 st.session_state.searched_recipients = found_recipients
                 
-                # Update events and recipients lists
+                # Update events and recipients lists - always use searched data
                 events = st.session_state.searched_events
                 recipients = st.session_state.searched_recipients
                 
                 if found_events or found_recipients:
-                    st.success(f"✅ Found {len(found_events)} events and {len(found_recipients)} recipients in zipcode {zipcode}")
+                    date_info = f" between {start_date} and {end_date}" if start_date != end_date else f" on {start_date}"
+                    st.success(f"✅ Found {len(found_events)} events{date_info} and {len(found_recipients)} recipients in zipcode {zipcode}")
                 else:
-                    st.warning(f"⚠️ No events or recipients found for zipcode {zipcode}. Showing default data.")
-                    events = default_events
-                    recipients = default_recipients
+                    st.warning(f"⚠️ No events or recipients found for zipcode {zipcode}{f' between {start_date} and {end_date}' if start_date != end_date else ''}.")
+                    # Still use empty lists if nothing found, don't fall back to default
+                    events = st.session_state.searched_events if st.session_state.searched_events else []
+                    recipients = st.session_state.searched_recipients if st.session_state.searched_recipients else []
             else:
                 st.error(f"❌ Could not find location for zipcode: {zipcode}")
                 st.info("Using default map center")
@@ -342,6 +414,11 @@ if button_clicked:
 with col2:
     st.subheader("Map View")
     
+    # Determine which events/recipients to display
+    # Always prioritize searched data
+    display_events = st.session_state.searched_events if st.session_state.searched_events else (default_events if 'default_events' in locals() else [])
+    display_recipients = st.session_state.searched_recipients if st.session_state.searched_recipients else (default_recipients if 'default_recipients' in locals() else [])
+    
     # Create Folium map
     m = folium.Map(
         location=st.session_state.map_center,
@@ -350,7 +427,7 @@ with col2:
     )
     
     # Add events to map (blue markers)
-    for event in events:
+    for event in display_events:
         if 'location' in event and len(event['location']) == 2:
             folium.Marker(
                 location=event['location'],
@@ -365,7 +442,7 @@ with col2:
             ).add_to(m)
     
     # Add recipients to map (green markers)
-    for recipient in recipients:
+    for recipient in display_recipients:
         if 'location' in recipient and len(recipient['location']) == 2:
             folium.Marker(
                 location=recipient['location'],
