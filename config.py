@@ -8,7 +8,7 @@ load_dotenv()
 
 # NVIDIA Nemotron Configuration
 NVIDIA_API_KEY = os.getenv("NVIDIA_API_KEY", "")
-NEMOTRON_MODEL = "nvidia/llama-3.1-nemotron-70b-instruct"  # NVIDIA hosted model
+NEMOTRON_MODEL = "nvidia/nemotron-nano-12b-v2-vl"  # NVIDIA hosted model
 NVIDIA_ENDPOINT = "https://integrate.api.nvidia.com/v1/chat/completions"
 
 # System Configuration

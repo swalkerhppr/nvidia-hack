@@ -36,14 +36,18 @@ class NemotronClient:
             self.endpoint,
             headers={
                 "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json"
+                "accept": "application/json",
+                "content-type": "application/json"
             },
             json={
                 "model": self.model,
                 "messages": messages,
                 "temperature": temperature,
                 "max_tokens": max_tokens,
-                "stream": False
+                "stream": False,
+                "frequency_penalty": 0,
+                "presence_penalty": 0,
+                "top_p": 1
             },
             timeout=30
         )

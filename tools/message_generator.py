@@ -78,14 +78,18 @@ Generate only the message text, no subject line or signatures."""
             config.NVIDIA_ENDPOINT,
             headers={
                 "Authorization": f"Bearer {api_key}",
-                "Content-Type": "application/json"
+                "accept": "application/json",
+                "content-type": "application/json"
             },
             json={
                 "model": config.NEMOTRON_MODEL,
                 "messages": [{"role": "user", "content": prompt}],
                 "temperature": 0.7,
                 "max_tokens": 300,
-                "stream": False
+                "stream": False,
+                "frequency_penalty": 0,
+                "presence_penalty": 0,
+                "top_p": 1
             },
             timeout=10
         )
